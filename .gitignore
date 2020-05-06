@@ -43,7 +43,7 @@ node_modules
 ./coverage
 
 # dotenv
-.env
+.env*
 
 # VS Code
 .vscode/
