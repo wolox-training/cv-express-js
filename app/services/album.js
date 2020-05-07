@@ -5,7 +5,7 @@ exports.albumsByUser = () => {
   return getData(url);
 };
 
-exports.photosByAlbum = albumId => {
-  const url = `albums/${albumId}/photos`;
+exports.photosByAlbum = ({ id }) => {
+  const url = `albums/${id}/photos`;
   return getData(url);
 };

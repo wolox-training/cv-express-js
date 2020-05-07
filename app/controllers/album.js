@@ -1,14 +1,13 @@
 const { albumsByUser, photosByAlbum } = require('../services/album');
 
-module.exports.getAlbums = (_, res) => {
-  albumsByUser(1)
+module.exports.getAlbums = (_, res, next) => {
+  albumsByUser()
     .then(data => res.status(200).send({ books: data }))
-    .catch(error => res.status(400).send({ error }));
+    .catch(next);
 };
 
-module.exports.getPhotos = (req, res) => {
-  const { id } = req.params;
-  photosByAlbum(id)
+module.exports.getPhotos = (req, res, next) => {
+  photosByAlbum(req.params)
     .then(data => res.status(200).send({ photos: data }))
-    .catch(error => res.status(400).send({ error }));
+    .catch(next);
 };
