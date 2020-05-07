@@ -1,4 +1,4 @@
-const { getData } = require('../../config/api');
+const { getData } = require('./api');
 
 exports.albumsByUser = userId => {
   const url = `users/${userId}/albums`;

@@ -8,10 +8,4 @@ const api = create({
   }
 });
 
-const getData = url =>
-  api
-    .get(url)
-    .then(({ data }) => data)
-    .catch(error => ({ error }));
-
-module.exports = { api, getData };
+module.exports = api;
