@@ -2,10 +2,6 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) =>
-    /*
-      Add altering commands here.
-      Return a promise to correctly handle asynchronicity.
-    */
     queryInterface.createTable('users', {
       id: {
         type: Sequelize.INTEGER,
@@ -13,11 +9,11 @@ module.exports = {
         unique: true,
         primaryKey: true
       },
-      name: {
+      first_name: {
         type: Sequelize.STRING,
         allowNull: false
       },
-      lastname: {
+      last_name: {
         type: Sequelize.STRING,
         allowNull: false
       },
@@ -31,10 +27,5 @@ module.exports = {
         allowNull: false
       }
     }),
-  down: queryInterface =>
-    /*
-      Add reverting commands here.
-      Return a promise to correctly handle asynchronicity.
-    */
-    queryInterface.dropTable('users')
+  down: queryInterface => queryInterface.dropTable('users')
 };
