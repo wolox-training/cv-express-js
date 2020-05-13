@@ -22,7 +22,7 @@ exports.userSchema = {
     in: ['body'],
     isAlphanumeric: true,
     exists: true,
-    errorMessage: 'password is no valid',
+    errorMessage: 'password is not valid',
     isLength: {
       options: { min: 8 }
     }

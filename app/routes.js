@@ -5,7 +5,7 @@ const { healthCheck } = require('./controllers/healthCheck');
 // album controller
 const { getAlbums, getPhotos } = require('./controllers/album');
 
-// account controller
+// user controller
 const { signUp } = require('./controllers/user');
 
 exports.init = app => {
