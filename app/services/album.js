@@ -1,11 +1,5 @@
 const { getData } = require('./api');
 
-exports.albumsByUser = () => {
-  const url = 'albums';
-  return getData(url);
-};
+exports.albumsByUser = () => getData('albums');
 
-exports.photosByAlbum = albumId => {
-  const url = `albums/${albumId}/photos`;
-  return getData(url);
-};
+exports.photosByAlbum = ({ id }) => getData(`albums/${id}/photos`);
