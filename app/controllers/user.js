@@ -11,8 +11,8 @@ exports.signUp = (req, res, next) => {
       }
       return signUp({ ...req.body });
     })
-    .then(({ dataValues }) => {
-      logger.info(`user with email: ${dataValues.email} was created`);
+    .then(({ dataValues: { first_name, last_name } }) => {
+      logger.info(`user with name: ${first_name} ${last_name} was created`);
       res.status(201).send();
     })
     .catch(next);
