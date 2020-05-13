@@ -1,7 +1,7 @@
 const availableDomains = ['wolox.co', 'wolox.com.ar', 'wolox.mx', 'wolox.cl'];
 
 exports.userSchema = {
-  first_name: {
+  firstName: {
     in: ['body'],
     exists: true,
     errorMessage: 'first name is required'
@@ -27,7 +27,7 @@ exports.userSchema = {
       options: { min: 8 }
     }
   },
-  last_name: {
+  lastName: {
     in: ['body'],
     exists: true,
     errorMessage: 'last name is required'
