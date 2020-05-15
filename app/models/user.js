@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
       timestamps: false,
       tableName: 'users',
       freezeTableName: true,
-      underscore: true
+      underscored: true
     }
   );
   return User;
