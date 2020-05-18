@@ -1,14 +1,14 @@
 const { checkSchema, validationResult } = require('express-validator');
 const errors = require('../errors');
 
-exports.schemaValidator = schema => checkSchema(schema);
+const schemaValidator = schema => checkSchema(schema);
 
-exports.validator = (req, res, next) => {
+const validator = (req, _, next) => {
   const errorsOnRequest = validationResult(req);
   if (!errorsOnRequest.isEmpty()) {
-    return res
-      .status(422)
-      .json({ errors: errorsOnRequest.array().map(error => errors.schemaValiation(error.msg)) });
+    throw errors.schemaValiation(errorsOnRequest.array().map(error => error.msg));
   }
   return next();
 };
+
+exports.paramsValidator = squema => [schemaValidator(squema), validator];
