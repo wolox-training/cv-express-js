@@ -11,6 +11,12 @@ const checkEmailExist = ({ email }) =>
     throw errors.databaseError(err.message);
   });
 
+const createUser = data =>
+  User.create({ ...data }).catch(err => {
+    logger.error(`can't create user with email ${data.email}`);
+    throw errors.databaseError(err);
+  });
+
 exports.signUp = async body => {
   try {
     const user = await checkEmailExist(body);
@@ -19,11 +25,8 @@ exports.signUp = async body => {
       throw errors.existRegister('user');
     }
     const hashPass = await hashPassword(body.password);
-    return User.create({ ...body, password: hashPass }).catch(err => {
-      logger.error(`can't create user with email ${body.email}`);
-      throw errors.databaseError(err);
-    });
-  } catch (e) {
-    throw e;
+    return createUser({ ...body, password: hashPass });
+  } catch (error) {
+    throw error;
   }
 };
