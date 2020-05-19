@@ -6,7 +6,7 @@ const DEFAULT_STATUS_CODE = 500;
 const statusCodes = {
   [errors.DATABASE_ERROR]: 503,
   [errors.DEFAULT_ERROR]: 500,
-  [errors.EXIST_USER]: 409,
+  [errors.EXIST_REGISTER]: 409,
   [errors.SCHEMA_VALIDATION]: 422
 };
 

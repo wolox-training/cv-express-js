@@ -1,14 +1,16 @@
+const dictionary = require('../dictionary');
+
 const availableDomains = ['wolox.co', 'wolox.com.ar', 'wolox.mx', 'wolox.cl'];
 
 exports.userSchema = {
   firstName: {
     in: ['body'],
     exists: true,
-    errorMessage: 'first name is required'
+    errorMessage: dictionary.required('first name')
   },
   email: {
     in: ['body'],
-    errorMessage: 'email is not valid',
+    errorMessage: dictionary.invalid('email'),
     exists: true,
     isEmail: true,
     custom: {
@@ -22,7 +24,7 @@ exports.userSchema = {
     in: ['body'],
     isAlphanumeric: true,
     exists: true,
-    errorMessage: 'password is not valid',
+    errorMessage: dictionary.invalid('password'),
     isLength: {
       options: { min: 8 }
     }
@@ -30,6 +32,6 @@ exports.userSchema = {
   lastName: {
     in: ['body'],
     exists: true,
-    errorMessage: 'last name is required'
+    errorMessage: dictionary.required('last name')
   }
 };
