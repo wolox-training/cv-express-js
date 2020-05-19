@@ -1,7 +1,6 @@
 const request = require('supertest');
 const { app } = require('../../server');
 const { User } = require('../../app/models');
-const { createUser } = require('../../app/services/user');
 const { invalid, required } = require('../../app/dictionary');
 const { SCHEMA_VALIDATION, EXIST_REGISTER } = require('../../app/errors');
 
@@ -37,7 +36,7 @@ describe('User controller, Post /users', () => {
     });
 
     it('should fail when email is already used', async () => {
-      await createUser(mockUser);
+      await User.newUser(mockUser);
       const { status, body } = await makeRequest(mockUser);
       expect(status).toBe(409);
       expect(body).toMatchObject({ internal_code: EXIST_REGISTER });
