@@ -11,8 +11,8 @@ const checkEmailExist = ({ email }) =>
     throw errors.databaseError(err.message);
   });
 
-const createUser = data =>
-  User.create({ ...data }).catch(err => {
+exports.createUser = async data =>
+  User.create({ ...data, password: await hashPassword(data.password) }).catch(err => {
     logger.error(`can't create user with email ${data.email}`);
     throw errors.databaseError(err);
   });
@@ -24,8 +24,7 @@ exports.signUp = async body => {
       logger.info(`email already exist ${body.email}`);
       throw errors.existRegister('user');
     }
-    const hashPass = await hashPassword(body.password);
-    return createUser({ ...body, password: hashPass });
+    return this.createUser(body);
   } catch (error) {
     throw error;
   }
