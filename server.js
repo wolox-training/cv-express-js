@@ -13,5 +13,3 @@ Promise.resolve()
     logger.info(`Listening on port: ${port}`);
   })
   .catch(logger.error);
-
-module.exports = { app };

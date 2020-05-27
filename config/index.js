@@ -38,7 +38,8 @@ const config = {
     },
     session: {
       header_name: 'authorization',
-      secret: process.env.NODE_API_SESSION_SECRET
+      secret: process.env.NODE_API_SESSION_SECRET,
+      salt: process.env.SALT
     },
     headers: {
       apiDate: process.env.API_DATE || 'X-API-Date',

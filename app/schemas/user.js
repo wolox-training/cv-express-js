@@ -6,7 +6,7 @@ exports.userSchema = {
   firstName: {
     in: ['body'],
     exists: true,
-    errorMessage: dictionary.required('first name')
+    errorMessage: dictionary.required('first_name')
   },
   email: {
     in: ['body'],
@@ -32,6 +32,6 @@ exports.userSchema = {
   lastName: {
     in: ['body'],
     exists: true,
-    errorMessage: dictionary.required('last name')
+    errorMessage: dictionary.required('last_name')
   }
 };

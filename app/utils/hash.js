@@ -1,3 +1,6 @@
 const bcrypt = require('bcryptjs');
+const config = require('../../config');
 
-exports.hashPassword = password => bcrypt.hash(password, parseInt(process.env.SALT));
+const salt = bcrypt.genSaltSync(parseInt(config.common.session.salt));
+
+exports.hashPassword = password => bcrypt.hashSync(password, salt);
