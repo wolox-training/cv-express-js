@@ -18,7 +18,7 @@ describe('User controller, POST /users', () => {
       }
     });
 
-    it('should return 201 status code', () => {
+    it('should return status code 201', () => {
       expect(response.status).toBe(201);
     });
 
@@ -31,7 +31,7 @@ describe('User controller, POST /users', () => {
     });
   });
 
-  describe('create user with existed email', () => {
+  describe('create user with existing email', () => {
     beforeAll(async () => {
       try {
         await createUser();
@@ -41,7 +41,7 @@ describe('User controller, POST /users', () => {
       }
     });
 
-    it('should return 409 status code', () => {
+    it('should return status code 409', () => {
       expect(response.status).toBe(409);
     });
 
@@ -59,7 +59,7 @@ describe('User controller, POST /users', () => {
       }
     });
 
-    it('should return 422 status code ', () => {
+    it('should return status code 422', () => {
       expect(response.status).toBe(422);
     });
 
@@ -77,7 +77,7 @@ describe('User controller, POST /users', () => {
       }
     });
 
-    it('should return 422 status code ', () => {
+    it('should return status code 422', () => {
       expect(response.status).toBe(422);
     });
 
