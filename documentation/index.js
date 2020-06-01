@@ -31,11 +31,6 @@ module.exports = {
     }
   ],
   security: [],
-  tags: [
-    {
-      name: 'CRUD operations'
-    }
-  ],
   paths,
   components: {
     schemas,
