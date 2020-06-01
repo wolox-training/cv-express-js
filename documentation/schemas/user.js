@@ -1,9 +1,9 @@
 module.exports = {
-  first_name: {
+  firstName: {
     type: 'string',
     example: 'Jhon'
   },
-  last_name: {
+  lastName: {
     type: 'string',
     example: 'Doe'
   },
@@ -18,11 +18,11 @@ module.exports = {
   User: {
     type: 'object',
     properties: {
-      first_name: {
-        $ref: '#/components/schemas/first_name'
+      firstName: {
+        $ref: '#/components/schemas/firstName'
       },
-      last_name: {
-        $ref: '#/components/schemas/last_name'
+      lastName: {
+        $ref: '#/components/schemas/lastName'
       },
       email: {
         $ref: '#/components/schemas/email'
