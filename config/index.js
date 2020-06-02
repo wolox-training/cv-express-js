@@ -37,7 +37,7 @@ const config = {
       port: process.env.PORT
     },
     session: {
-      header_name: 'authorization',
+      headerName: 'authorization',
       secret: process.env.NODE_API_SESSION_SECRET,
       salt: process.env.SALT
     },
@@ -45,6 +45,9 @@ const config = {
       apiDate: process.env.API_DATE || 'X-API-Date',
       packageVersion: process.env.PACKAGE_VERSION || 'X-Package-Version',
       nodeVersion: process.env.NODE_VERSION || 'X-Node-Version'
+    },
+    validations: {
+      domains: process.env.AVAILABLE_DOMAINS
     }
   }
 };

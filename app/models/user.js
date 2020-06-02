@@ -1,6 +1,6 @@
 const errors = require('../errors');
 const logger = require('../logger');
-const { hashPassword } = require('../utils/hash');
+const { hashPassword } = require('../utils/session');
 
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define(

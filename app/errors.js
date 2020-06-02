@@ -16,3 +16,6 @@ exports.existRegister = entity => internalError(dictionary.exist(entity), export
 
 exports.SCHEMA_VALIDATION = 'schema_validation';
 exports.schemaValiation = errors => internalError(errors, exports.SCHEMA_VALIDATION);
+
+exports.WRONG_CREDENTIALS = 'wrong_credentials';
+exports.wrongCredentials = message => internalError(dictionary.wrong(message), exports.WRONG_CREDENTIALS);
