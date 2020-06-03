@@ -44,7 +44,8 @@ const config = {
     headers: {
       apiDate: process.env.API_DATE || 'X-API-Date',
       packageVersion: process.env.PACKAGE_VERSION || 'X-Package-Version',
-      nodeVersion: process.env.NODE_VERSION || 'X-Node-Version'
+      nodeVersion: process.env.NODE_VERSION || 'X-Node-Version',
+      expiresIn: process.env.EXPIRES || '1h'
     },
     validations: {
       domains: process.env.AVAILABLE_DOMAINS

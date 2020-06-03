@@ -8,4 +8,7 @@ exports.hashPassword = password => bcrypt.hashSync(password, salt);
 
 exports.compareHash = (password, hash) => bcrypt.compareSync(password, hash);
 
-exports.generaToken = ({ id }) => jwt.sign({ userId: id }, config.common.session.secret);
+exports.generaToken = ({ id }) => {
+  const { secret, expiresIn } = config.common.session;
+  return jwt.sign({ userId: id }, secret, { expiresIn });
+};
