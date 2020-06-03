@@ -1,7 +1,7 @@
 const { User } = require('../models');
 const errors = require('../errors');
 const logger = require('../logger');
-const { compareHash, generaToken } = require('../utils/session');
+const { compareHash, generaToken } = require('../utils/hash');
 
 exports.signUp = async body => {
   try {
