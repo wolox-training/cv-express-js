@@ -33,7 +33,14 @@ module.exports = {
       ],
       responses: {
         200: {
-          description: 'Photos by user were obtained'
+          description: 'Photos by user were obtained',
+          content: {
+            'application/json': {
+              schema: {
+                $ref: '#/components/schemas/Photos'
+              }
+            }
+          }
         }
       }
     }
