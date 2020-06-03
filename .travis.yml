@@ -6,8 +6,7 @@ node_js:
 sudo: true
 
 env:
-  - CXX=g++-4.8 NODE_ENV=testing
-  - AVAILABLE_DOMAINS=wolox.co,wolox.com.ar,wolox.mx,wolox.cl
+  - CXX=g++-4.8 NODE_ENV=testin AVAILABLE_DOMAINS=wolox.co,wolox.com.ar,wolox.mx,wolox.cl
 addons:
   apt:
     sources:
