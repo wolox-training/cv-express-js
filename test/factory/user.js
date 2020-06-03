@@ -1,8 +1,8 @@
 const { factory } = require('factory-girl');
 const { mockUser } = require('../constants');
-const db = require('../../app/models');
 const { hashPassword } = require('../../app/utils/session');
+const { factoryByModel } = require('./factory_by_models');
 
-factory.define('User', db.User, { ...mockUser, password: () => hashPassword(mockUser.password) });
+factoryByModel('User', { ...mockUser, password: () => hashPassword(mockUser.password) });
 
 exports.createUser = () => factory.create('User');
