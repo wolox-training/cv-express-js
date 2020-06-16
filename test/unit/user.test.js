@@ -122,8 +122,8 @@ describe('User controller. POST /users/sessions', () => {
       }
     });
 
-    it('should return status code 422', () => {
-      expect(response.status).toBe(422);
+    it('should return status code 401', () => {
+      expect(response.status).toBe(401);
     });
 
     it('should not contain token in headers', () => {
@@ -146,8 +146,8 @@ describe('User controller. POST /users/sessions', () => {
       }
     });
 
-    it('should return status code 422', () => {
-      expect(response.status).toBe(422);
+    it('should return status code 401', () => {
+      expect(response.status).toBe(401);
     });
 
     it('should not contain token in headers', () => {
