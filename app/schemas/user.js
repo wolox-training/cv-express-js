@@ -1,6 +1,5 @@
 const dictionary = require('../dictionary');
-
-const availableDomains = ['wolox.co', 'wolox.com.ar', 'wolox.mx', 'wolox.cl'];
+const { validationDomain } = require('../utils/validations');
 
 exports.userSchema = {
   firstName: {
@@ -14,10 +13,7 @@ exports.userSchema = {
     exists: true,
     isEmail: true,
     custom: {
-      options: value => {
-        const [, domain] = value.split('@');
-        return availableDomains.some(domainOpt => domainOpt === domain);
-      }
+      options: value => validationDomain(value)
     }
   },
   password: {
@@ -33,5 +29,22 @@ exports.userSchema = {
     in: ['body'],
     exists: true,
     errorMessage: dictionary.required('last_name')
+  }
+};
+
+exports.signInSchema = {
+  email: {
+    in: ['body'],
+    errorMessage: dictionary.invalid('email'),
+    exists: true,
+    isEmail: true,
+    custom: {
+      options: value => validationDomain(value)
+    }
+  },
+  password: {
+    in: ['body'],
+    exists: true,
+    errorMessage: dictionary.required('password')
   }
 };

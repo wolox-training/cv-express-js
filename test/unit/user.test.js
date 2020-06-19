@@ -1,6 +1,7 @@
 const request = require('supertest');
 const app = require('../../app');
-const { EXIST_REGISTER, SCHEMA_VALIDATION } = require('../../app/errors');
+const config = require('../../config');
+const { EXIST_REGISTER, SCHEMA_VALIDATION, WRONG_CREDENTIALS } = require('../../app/errors');
 const { createUser } = require('../factory/user');
 const { mockUser, wrongPassword } = require('../constants');
 
@@ -83,6 +84,78 @@ describe('User controller, POST /users', () => {
 
     it(`should return internal code ${SCHEMA_VALIDATION}`, () => {
       expect(response.body).toMatchObject({ internal_code: SCHEMA_VALIDATION });
+    });
+  });
+});
+
+describe('User controller. POST /users/sessions', () => {
+  describe('sign in with correct credentials', () => {
+    let response = {};
+    beforeAll(async () => {
+      try {
+        await createUser();
+        const { email, password } = mockUser;
+        response = await server.post('/users/sessions').send({ email, password });
+      } catch (err) {
+        throw err;
+      }
+    });
+
+    it('should return status code 201', () => {
+      expect(response.status).toBe(201);
+    });
+
+    it('should contain token in headers', () => {
+      expect(response.header).toHaveProperty([config.common.session.headerName]);
+    });
+  });
+
+  describe('sign in with incorrect credentials', () => {
+    let response = {};
+    beforeAll(async () => {
+      try {
+        await createUser();
+        const { email } = mockUser;
+        response = await server.post('/users/sessions').send({ email, password: wrongPassword });
+      } catch (err) {
+        throw err;
+      }
+    });
+
+    it('should return status code 401', () => {
+      expect(response.status).toBe(401);
+    });
+
+    it('should not contain token in headers', () => {
+      expect(response.header).not.toHaveProperty([config.common.session.headerName]);
+    });
+
+    it(`should return internal code ${WRONG_CREDENTIALS}`, () => {
+      expect(response.body).toMatchObject({ internal_code: WRONG_CREDENTIALS });
+    });
+  });
+
+  describe('sign in with nonexistent credentials', () => {
+    let response = {};
+    beforeAll(async () => {
+      try {
+        const { email, password } = mockUser;
+        response = await server.post('/users/sessions').send({ email, password });
+      } catch (err) {
+        throw err;
+      }
+    });
+
+    it('should return status code 401', () => {
+      expect(response.status).toBe(401);
+    });
+
+    it('should not contain token in headers', () => {
+      expect(response.header).not.toHaveProperty([config.common.session.headerName]);
+    });
+
+    it(`should return internal code ${WRONG_CREDENTIALS}`, () => {
+      expect(response.body).toMatchObject({ internal_code: WRONG_CREDENTIALS });
     });
   });
 });
